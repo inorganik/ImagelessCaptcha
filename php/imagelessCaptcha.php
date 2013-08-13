@@ -57,12 +57,12 @@ class imagelessCaptcha {
 		}
 		else if ($this->number < 1000) {
 			$phrase = $this->ones[substr($this->number, 0, 1)].'-hundred ';
-			$phrase .= $this->formTens(substr($this->number, 1, 2));
+			$phrase .= ' and '.$this->formTens(substr($this->number, 1, 2));
 		}
 		else if ($number < 10000) {
 			$phrase = $this->ones[substr($this->number, 0, 1)].'-thousand ';
 			$phrase .= $this->ones[substr($this->number, 1, 1)].'-hundred ';
-			$phrase .= $this->formTens(substr($this->number, 2, 2));
+			$phrase .= ' and '.$this->formTens(substr($this->number, 2, 2));
 		}
 		// decimal
 		if ($this->prefs['use_decimal'] == true) {
