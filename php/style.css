@@ -1,0 +1,382 @@
+@charset "UTF-8";
+/* 
+
+	IMAGELESS CAPTCHA STYLE
+
+*/
+
+html, body {
+	height:100%;
+}
+body {
+	margin:0;
+	padding:0;
+	font-weight:300;
+	font-family:Helvetica, Arial, sans-serif;
+	color:#4f4f4f;
+	position:relative;
+}
+#wrap {
+	width:768px;
+	min-height:100%;
+	height:auto !important;
+	height:100%;
+	margin:0 auto -40px auto;
+}
+/* --------------- header ---------------- */
+
+header {
+	display:block;
+	width:100%;
+	height:auto;
+	overflow:hidden;	
+	text-align:left; 
+}
+
+/* ------------------ footer ------------------ */
+/* Thanks to RyanFait.com for the sticky footer */
+
+.push {
+	height:40px;
+}
+footer {
+	display:block;
+	width:100%;
+	color:#ccc;
+	background-color:#323232;
+	min-height:40px;	
+	text-align:left;
+	font-size:.8em;
+}
+footer a {
+	color:#fff;
+}
+footer ul {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+}
+footer li {
+	float:left;
+	padding:10px;
+}
+.footer-inner {
+	padding:10px;
+}
+
+/* ----------- elements ------------- */
+
+a {
+	color:#4d63bc;
+	text-decoration:none;
+	cursor:pointer;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+a:hover, a:active {
+	text-decoration:underline;
+}
+a.block {
+	width:100%;
+	height:100%;
+	display:block;
+	cursor:pointer;
+}
+p {
+	margin-top:0;
+	line-height:1.4em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top:0;
+}
+
+h1 { color:#4f4f4f }
+
+ul, ol {
+	margin-top:0;
+	padding-left:28px;
+}
+ul.errors {
+	padding:20px 20px 20px 40px;
+	background: rgba(255, 0, 0, .2);
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+}
+ul.success {
+	padding:20px;
+	background: rgba(0, 255, 0, .2);
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	list-style-type:none;
+}
+ul.nobullets {
+	list-style-type:none;
+}
+
+ol ol {
+	list-style-type:upper-latin;
+	margin-bottom:1em;
+}
+ol ol ol {
+	list-style-type:lower-roman;
+}
+
+hr {
+	border-bottom:1px #4f4f4f solid;
+	border-top:none;
+}
+
+/* misc */
+
+::-moz-selection {
+	color: #fff;
+	background-color:#000;
+}
+::selection {
+	color: #fff;
+	background-color:#000;
+}
+.noSelect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.highlight {
+	background:rgba(255,240,0,.2);
+}
+
+/* ---------------- structure ----------------- */
+
+section {
+	display:block;
+	clear:left;
+	padding:0 0 20px 0;
+}
+.col {
+	float:left;
+	display:inline;
+}
+.inner {
+	padding:15px;
+	position:relative;
+}
+.inner:after,
+section:after,
+.clearfix:after,
+form:after {
+	content: " ";
+	display: block; 
+	height: 0; 
+	clear: both;
+}
+.inner img {
+	max-width:100%;
+	height:auto;
+}
+
+/* column widths */
+.full { width:100% }
+.threeQuarters { width:75% }
+.twoThirds { width:66.6% }
+.threeFifths { width:60% }
+.half, .stayHalf { width:50% }
+.twoFifths { width:40% }
+.third { width:33.3% }
+.quarter { width:25% }
+
+/* floating and alignment */
+.nofloat { float:none !important }
+.alignleft { text-align:left !important }
+.alignright { text-align:right !important }
+.aligncenter { 
+	text-align:center !important;
+	margin-left:auto;
+	margin-right:auto;
+}
+/* add-on margins */
+.noMargin { margin:0 !important }
+.marginTop { margin-top:14px !important }
+.marginLeft { margin-left:14px !important }
+.marginRight { margin-right:14px !important }
+.marginBottom { margin-bottom:14px !important }
+
+/* floats */
+.clear { clear:both }
+.clearLeft { clear:left }
+.clearRight { clear:right }
+
+.inlineRight {
+	float:right;
+	display:inline;
+}
+.inlineLeft {
+	float:left;
+	display:inline;
+}
+.leftToCenter { text-align:left }
+.rightToCenter { text-align:right }
+.alignRightToLeft { text-align:right }
+
+/* ---------------- forms ----------------- */
+
+form {
+	width:500px;
+	position:relative;
+}
+.form-inner {
+	padding:5px 0;
+	overflow:hidden;
+}
+.form-inner-center {
+	padding:5px 5px;
+	overflow:hidden;
+}
+.form-inner-left {
+	padding:5px 5px 5px 0;
+}
+.form-inner-right {
+	padding:5px 0 5px 5px;
+}
+label {
+	font-weight:700;
+	line-height:1.4em;
+	display:inline-block;
+	margin-bottom:5px;
+}
+label span {
+	font-weight:300;
+}
+label.checkLabel {
+	line-height:1.3em; 
+	font-weight:400;
+	display:block;
+	margin-left:21px;
+	overflow:hidden;
+}
+.textInput,
+textarea {
+	width:100%;
+	padding:5px 7px;
+	margin:0;
+	color:#4f4f4f;
+	font:400 1.2em/1.2em Helvetica, Arial, Helvetica, sans-serif;
+	background:#fff;
+	outline:none;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	position:relative;
+	border:2px #4f4f4f solid;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+}
+.textInput {
+	height:40px;
+}
+
+/* checkboxes/radios */
+
+.tickbox {
+	float:left;
+	display:inline;
+	margin:3px 7px 0 0;
+	padding:0;
+}
+
+/* submit */
+
+.submit,
+button {
+	height:auto;
+	width:120px;
+	margin:0;
+	padding:10px 20px;
+	text-align:center;
+	color:#fff;
+	font:700 1.2em/1.0em Helvetica, Arial, Helvetica, sans-serif;
+	background-color:#4d63bc;
+	outline:none;
+	border:none;
+	cursor:pointer;
+	position:relative;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+}
+
+/* buttons */
+
+
+
+/* placeholders */
+
+::-webkit-input-placeholder { 
+	color:#ccc; 
+	font:400 1.0em/1.2em Helvetica, Arial, Helvetica, sans-serif;
+}
+::-moz-placeholder { color:#ccc; } 
+input:-moz-placeholder { color:#ccc; }
+
+
+/* ---------------- responsive ----------------- */
+
+@media all and (max-width: 728px) {
+	
+	#wrap { width:100% }
+	
+	/* ---------------- structure */
+	
+	.quarter,
+	.threeQuarters,
+	.third,
+	.twoThirds,
+	.twoFifths,
+	.threeFifths { width:50% }
+	
+}
+@media all and (max-width: 480px) {
+	
+	/* ---------------- structure */
+	
+	.inner {
+		padding:10px;
+	}
+	form,
+	.half,
+	.quarter,
+	.threeQuarters,
+	.third,
+	.twoThirds,
+	.twoFifths,
+	.threeFifths { width:100% }
+	
+	.leftToCenter,
+	.rightToCenter { text-align:center }
+	.alignRightToLeft { text-align:left }
+	
+	/* ---------------- elements */
+	
+	h1 { font-size:1.5em }
+	h2 { font-size:1.3em }
+	h3 { font-size:1.1em }
+	h4 { font-size:1.0em }
+	h5 { font-size:.7em }
+	h6 { font-size:.6em }
+	
+	h4, h5, h6 {
+		margin-bottom:.5em 
+	}
+	
+}
+@media all and (max-width: 320px) {
+	
+	
+}
