@@ -16,7 +16,9 @@ Creates a random number on every page load, based on your preferences. From that
 ## Setup
 
 Include the imagelessCaptcha class:
-`<?php include "imagelessCaptcha.php"; ?>`
+```php
+<?php include "imagelessCaptcha.php"; ?>
+```
 
 Implement the class
 
@@ -28,13 +30,19 @@ $int = $imgLess->getInt();
 ?>
 ```
 
-In your form, add a field for number input, and a hidden field with the correct number:
+In your form, add a section for the Imageless Captcha:
 
-```html
+1. echo the number phrase in a form label
+2. add a field for number input
+3. add a hidden field with the correct number
+
+Be sure to add the `step` attribute to the number field if you enable decimals.
+
+```php
 <label>Imageless Captcha (spam filter):<br>
 <?php echo $intPhrase; ?></label>
-<input type="number" name="number" step=".1">
-<input type="hidden" name="correctNumber" step=".1" value="<?php echo $int; ?>">
+<input type="number" name="number" step="0.1">
+<input type="hidden" name="correctNumber" value="<?php echo $int; ?>">
 ```
 
 On post submit, check user submitted number against the correct number:
@@ -58,3 +66,21 @@ if (isset($_POST['submit'])) {
 	} 
 }
 ```
+
+## Customize
+
+In `imagelessCaptcha.php`, simply edit the preferences array:
+
+```php
+// set preferences
+private $prefs = array(
+	
+	'num_digits' => 3, // 1 - 4
+	
+	'use_decimal' => true, // adds a decimal to the number
+	
+	'decimal_chance' => true // makes whether a decimal is added random
+);
+```
+
+

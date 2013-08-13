@@ -66,6 +66,7 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+	<a href="https://github.com/inorganik/ImagelessCaptcha"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
 	<div id="wrap">
         <header>
         	<div class="inner">
@@ -83,7 +84,7 @@ if (isset($_POST['submit'])) {
                     <li>Customizable</li>
                 </ul>
                 <h3>Example:</h3>
-                <form action="<?php $_SERVER['../PHP_SELF'] ?>" method="post">
+                <form action="index.php" method="post">
                     <?php if (count($errors) > 0) : 
 					// if there are errors ?>
                     <div class="col full">
@@ -121,7 +122,7 @@ if (isset($_POST['submit'])) {
                             <?php echo $intPhrase; ?></label>
                             <!-- the step attribute must be included if you 	-->
                             <!-- opt in to decimals in imageLess prefs. 		-->
-                            <input type="number" name="number" step=".1" class="textInput">
+                            <input type="number" name="number" step="0.1" class="textInput">
                         </div>
                     </div>
                     <div class="col full">
@@ -129,7 +130,7 @@ if (isset($_POST['submit'])) {
                         	<!-- this is where the correct value is stored 					-->
                             <!-- the user could look at the source and find it, 			-->
                             <!-- but that would take longer than making an earnest attempt 	-->
-                            <input type="hidden" name="correctNumber" step=".1" value="<?php echo $int; ?>">
+                            <input type="hidden" name="correctNumber" value="<?php echo $int; ?>">
                             <input type="submit" value="Send" name="submit" class="submit">
                         </div>
                     </div>
@@ -138,9 +139,8 @@ if (isset($_POST['submit'])) {
         </section>
     </div><!-- end #wrap -->
 	<div class="push">&nbsp;</div>
-</div><!-- end #wrap -->
-<footer>
-	<div class="footer-inner">By <a href="https://twitter.com/inorganik">Jamie Perkins</a>. </div>
-</footer>
+    <footer>
+        <div class="footer-inner">By <a href="https://twitter.com/inorganik">Jamie Perkins</a>. </div>
+    </footer>
 </body>
 </html>
