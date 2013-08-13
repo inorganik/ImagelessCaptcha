@@ -1,5 +1,5 @@
-# ImagelessCaptcha
-***
+# Imageless Captcha
+
 ## Advantages
 
 * Keeps your form clean, no ugly captcha images or third-party embedded styles
@@ -32,8 +32,7 @@ In your form, add a field for number input, and a hidden field with the correct 
 <input type="hidden" name="correctNumber" step=".1" value="<?php echo $int; ?>">`
 
 On post submit, check user submitted number against the correct number:
-`// on post submit
-if (isset($_POST['submit'])) {
+`if (isset($_POST['submit'])) {
 	
 	...
 
