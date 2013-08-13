@@ -19,11 +19,14 @@ Include the imagelessCaptcha class:
 `<?php include "imagelessCaptcha.php"; ?>`
 
 Implement the class
-`<?php
+
+```php
+<?php
 $imgLess = new imagelessCaptcha();
 $intPhrase = $imgLess->formPhrase();
 $int = $imgLess->getInt();
-?>`
+?>
+```
 
 In your form, add a field for number input, and a hidden field with the correct number:
 `<label>Imageless Captcha (spam filter):<br>
@@ -32,24 +35,23 @@ In your form, add a field for number input, and a hidden field with the correct 
 <input type="hidden" name="correctNumber" step=".1" value="<?php echo $int; ?>">`
 
 On post submit, check user submitted number against the correct number:
-`if (isset($_POST['submit'])) {
-	
-	...
 
+```php
+if (isset($_POST['submit'])) {
+	...
 	// users attempt
 	$number = intval($_POST['number']);
 	// get correct number from hidden field
 	$correctNumber = intval($_POST['correctNumber']);
-	
+
 	$errors = array();
-	
+
 	// check user-submitted number against correct number
 	if ($number != $correctNumber) {
 		$errors['captcha'] = "The number you entered for the spam filter is incorrect.";
 	}
 	if (!$errors) {
-		
 		// do something here
-		
 	} 
-}`
+}
+```
