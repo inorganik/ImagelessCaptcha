@@ -83,4 +83,8 @@ private $prefs = array(
 );
 ```
 
+## Contribute
+
+Fork this repo and add more language support!
+
 
