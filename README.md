@@ -7,11 +7,11 @@
 * Very easy to implement
 * Customizable
 
+## [Try the demo](http://inorganik.net/imagelessCaptcha)
+
 ## How it works
 
 Creates a random number on every page load, based on your preferences. From that number, it creates the number as a phrase. In the form, you use the phrase to ask the user to enter it as a number. When the form is posted, you simply check to see if the number matches.
-
-## [Try the demo](http://inorganik.net/imagelessCaptcha)
 
 ## Setup
 
@@ -29,10 +29,13 @@ $int = $imgLess->getInt();
 ```
 
 In your form, add a field for number input, and a hidden field with the correct number:
-`<label>Imageless Captcha (spam filter):<br>
+
+```html
+<label>Imageless Captcha (spam filter):<br>
 <?php echo $intPhrase; ?></label>
 <input type="number" name="number" step=".1">
-<input type="hidden" name="correctNumber" step=".1" value="<?php echo $int; ?>">`
+<input type="hidden" name="correctNumber" step=".1" value="<?php echo $int; ?>">
+```
 
 On post submit, check user submitted number against the correct number:
 
