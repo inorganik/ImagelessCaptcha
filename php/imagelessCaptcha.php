@@ -84,7 +84,7 @@ class imagelessCaptcha {
 			}
 		}
 		// randomize beginning of phrase, throw off parsers
-		$start = mt_rand(0, count($this->phraseBeginning));
+		$start = mt_rand(0, count($this->phraseBeginning)-1);
 		// final phrase
 		return $this->phraseBeginning[$start].$phrase.' written as a number?';
 	}
