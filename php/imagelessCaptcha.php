@@ -17,10 +17,10 @@ class imagelessCaptcha {
 	);
 	
 	// word arrays for phrase construction
-	private $ones = array('zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine');
+	private $ones = array('', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine');
 	private $teens = array('ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen');
-	private $tens = array('zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety');
-	
+	private $tens = array('', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety');
+	private $phraseBeginning = array('How is ', 'What is ');
 	
 	// create a number based on prefs
 	public $number;
@@ -31,9 +31,10 @@ class imagelessCaptcha {
 		$this->number = mt_rand($min, $max);
 	}
 	// form word phrase for tens digits
-	private function formTens($num) {
+	private function formTens($num, $and = false) {
 		$num = intval($num);
 		if ($num < 10) {
+			if ($num == 0) $and = false;
 			$phrase = $this->ones[$num];
 		} 
 		else if ($num < 20) {
@@ -48,6 +49,7 @@ class imagelessCaptcha {
 				$phrase = $this->tens[$digitTens];
 			}
 		}
+		if ($and) $phrase = ' and '.$phrase;
 		return $phrase;
 	}
 	// create the number phrase
@@ -57,12 +59,13 @@ class imagelessCaptcha {
 		}
 		else if ($this->number < 1000) {
 			$phrase = $this->ones[substr($this->number, 0, 1)].'-hundred ';
-			$phrase .= ' and '.$this->formTens(substr($this->number, 1, 2));
+			$phrase .= $this->formTens(substr($this->number, 1, 2), true);
 		}
 		else if ($number < 10000) {
 			$phrase = $this->ones[substr($this->number, 0, 1)].'-thousand ';
-			$phrase .= $this->ones[substr($this->number, 1, 1)].'-hundred ';
-			$phrase .= ' and '.$this->formTens(substr($this->number, 2, 2));
+			$hundreds = substr($this->number, 1, 1);
+			if ($hundreds > 0) $phrase .= $this->ones[$hundreds].'-hundred ';
+			$phrase .= $this->formTens(substr($this->number, 2, 2), true);
 		}
 		// decimal
 		if ($this->prefs['use_decimal'] == true) {
@@ -80,7 +83,10 @@ class imagelessCaptcha {
 				$phrase .= ' point '.$this->ones[$dec];
 			}
 		}
-		return 'What is '.$phrase.' written as a number?';
+		// randomize beginning of phrase, throw off parsers
+		$start = mt_rand(0, count($this->phraseBeginning));
+		// final phrase
+		return $this->phraseBeginning[$start].$phrase.' written as a number?';
 	}
 	// return the int
 	public function getInt() {
