@@ -23,9 +23,9 @@ if (isset($_POST['submit'])) {
 	$body = $_POST['body'];
 	
 	// users attempt
-	$number = intval($_POST['number']);
+	$number = floatval($_POST['number']);
 	// get correct number from hidden field
-	$correctNumber = intval($_POST['correctNumber']);
+	$correctNumber = floatval($_POST['correctNumber']);
 	
 	$errors = array();
 	
