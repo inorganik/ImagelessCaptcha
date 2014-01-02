@@ -9,7 +9,7 @@
 
     <title>Imageless Captcha</title>
 
-    <link rel="stylesheet" type="text/css" href="../assets/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/style.css?v=20140102">
 
     <script type="text/javascript" src="js/imagelessCaptcha.js"></script>
     <script type="text/javascript">
@@ -51,7 +51,7 @@
         <section>
             <form>
                 <div class="full col-inner-no-lr">
-                    <p class="large">A number is generated randomly, and stored in a global variable. imagelessCaptcha generates the number as a phrase and asks the user to write it a number, as shown below. When the form is submitted, validate by checking if the answer and the number match.</p>
+                    <p class="large">A number is generated randomly, and stored in a global variable. imagelessCaptcha generates the number as a phrase that asks the user to write it as a number, as shown below. When the form is submitted, it is validated by checking if the answer and the number match.</p>
                 </div>
                 <div class="full col-inner-no-lr">
                     <label class="weight600 gray" id="question"></label><br>
@@ -102,14 +102,14 @@
         }
     }
 
-    // reset
+    // reset (only needed for demo)
     function resetForm() {
 
         imgLess = new imagelessCaptcha(3, true, true);
         question = imgLess.formPhrase();
         document.getElementById("question").innerHTML = question;
         answer = imgLess.getInt();
-        document.getElementById("question").value = '';
+        document.getElementById("answer").value = '';
 
         document.getElementById("successMessage").style.display = "none";
         document.getElementById("errorMessage").style.display = "none";
