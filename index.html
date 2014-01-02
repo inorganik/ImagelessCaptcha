@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index,follow"> 
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>imagelessCaptcha.js</title>
+
+    <link rel="stylesheet" type="text/css" href="../assets/style.css">
+
+    <script type="text/javascript" src="js/imagelessCaptcha.js"></script>
+    <script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-7742845-9', 'inorganik.github.io');
+    ga('send', 'pageview');
+
+
+    </script>
+</head>
+
+<body>
+
+    <div id="wrap">
+        <header>
+            <div id="github"><a class="block" href="https://github.com/inorganik"></a></div>
+            <div class="leaderLine">////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</div>
+            <div id="logo"><a class="block" href="http://inorganik.net"></a></div>
+        </header>
+        <section>
+            <h1>imagelessCaptcha.js</h1>
+            <p>imagelessCaptcha.js is a dependency-free, lightweight JavaScript "class" that replaces the need for ugly captchas in your forms.</p>
+        </section>
+        <section id="errorMessage" style="display:none;">
+            <div class="full col-inner-no-lr" style="background-color:#FFDCDC;">
+                <h3 style="color:red">Error: The answer you submitted is incorrect. Please try again.</h3>
+            </div>
+        </section>
+        <section id="successMessage" style="display:none;">
+            <div class="full col-inner-no-lr" style="background-color:#E3FFB6;">
+                <h3 class="lime">Thank you! The form was submitted successfully.</h3>
+            </div>
+        </section>
+        <section>
+            <form>
+                <div class="full col-inner-no-lr">
+                    <p>A number is generated randomly, and stored in a global variable. imagelessCaptcha generates the number as a phrase and asks the user to write it a number, as shown below. When the form is submitted, validate by checking if the answer and the number match.</p>
+                </div>
+                <div class="full col-inner-no-lr">
+                    <label id="question"></label><br>
+                    <input type="text" value="" id="answer">
+                </div>
+                <div class="col-inner-no-lr">
+                    <input class="inlineLeft marginRight" type="button" value="Submit" onClick="submitForm()" style="width:100px;">
+                    <input class="inlineLeft marginRight" type="button" value="Reset" onClick="resetForm()" style="width:100px;">
+                </div>
+            </form>
+        </section>
+        <section class="noBorder">
+            <h3 class="marginTop"><a class="lime weight700" href="https://github.com/inorganik/imageslessCaptcha">Download on Github</a></h3>
+        </section>
+    </div>
+
+</body>
+<script type="text/javascript">
+
+
+    // create instance
+    var imgLess = new imagelessCaptcha(3, true, true);
+    var question = imgLess.formPhrase();
+    var answer = imgLess.getInt();
+
+    window.onload = function() {
+        
+        // put question into form
+        document.getElementById("question").innerHTML = question;
+        
+    }
+
+    // submit form
+    function submitForm() {
+
+        var userAnswer = Number(document.getElementById("answer").value);
+
+        if (userAnswer == answer) {
+            // success - submit form code here
+
+            // display success message
+            document.getElementById("successMessage").style.display = "block";
+            document.getElementById("errorMessage").style.display = "none";
+        } else {
+            // failure - display error message
+            document.getElementById("errorMessage").style.display = "block";
+            document.getElementById("successMessage").style.display = "none";
+        }
+    }
+
+    // reset
+    function resetForm() {
+
+        imgLess = new imagelessCaptcha(3, true, true);
+        question = imgLess.formPhrase();
+        document.getElementById("question").innerHTML = question;
+        answer = imgLess.getInt();
+        document.getElementById("question").value = '';
+
+        document.getElementById("successMessage").style.display = "none";
+        document.getElementById("errorMessage").style.display = "none";
+    }
+
+    </script>
+</html>
