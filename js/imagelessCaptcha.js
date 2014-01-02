@@ -20,7 +20,7 @@ function imagelessCaptcha(numDigits, useDecimal, decimalChance) {
 	this.useDecimal = useDecimal || false;
 	this.decimalChance = decimalChance || false;
 
-	this.ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+	this.ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 	this.teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 	this.tens = ['', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 	this.phraseBeginning = ['How is ', 'What is '];
@@ -94,6 +94,7 @@ function imagelessCaptcha(numDigits, useDecimal, decimalChance) {
 	}
 	// return the int
 	this.getInt = function() {
+		if (self.useDecimal == true) self.number = self.number.toFixed(1);
 		return self.number;
 	}
 }  
