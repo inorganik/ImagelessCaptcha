@@ -7,7 +7,7 @@ Creates a random number on every page load, based on your preferences. From that
 * Very easy to implement
 * Customizable
 
-## [JavaScript demo](http://inorganik.github.io/imagelessCaptcha)
+## [JavaScript demo](http://inorganik.github.io/ImagelessCaptcha)
 ## [PHP demo](http://inorganik.net/imagelessCaptcha)
 
 
